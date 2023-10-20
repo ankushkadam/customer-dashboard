@@ -24,6 +24,9 @@ export class SidebarComponent {
 
 
   showMenu(menu: any): void {
-    console.log('', menu);
+    this.menuList.forEach((m) => {
+      m.selected = false;
+    });
+    menu.selected = true;
   }
 }

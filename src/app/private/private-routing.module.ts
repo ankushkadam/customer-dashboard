@@ -9,6 +9,9 @@ const routes: Routes = [
     children: [
       {
         path: 'customer-dashboard', loadChildren: () => import('./customer/customer.module').then(c => c.CustomerModule)
+      },
+      {
+        path: 'user', loadChildren: () => import('./user/user.module').then(c => c.UserModule)
       }
     ]
   }
