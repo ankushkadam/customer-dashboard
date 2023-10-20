@@ -1,0 +1,31 @@
+.private-layout {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+
+  .header{
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    box-shadow: 2px 0px 10px -3px #ddd;
+  }
+
+  .sidenav{
+    top: 50px;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+    width: 13rem;
+  }
+  
+  .main_content{
+    transition: all 0.2s linear 0s;
+  
+    height: calc(100% - 50px);
+    margin-left: 13rem;
+    margin-top: 50px;
+    padding: 2rem;
+    background: #f9f6f6;
+    overflow: hidden;
+  }
+}

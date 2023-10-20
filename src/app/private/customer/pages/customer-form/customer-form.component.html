@@ -1,0 +1,51 @@
+<div class="customer-form">
+  <div class="card">
+    <div class="card-header">
+      <h5>Add Customer</h5>
+
+      <div class="action-wrapper">
+        <button class="btn btn-outline-primary" (click)="submit()">Save</button>
+        <button class="btn btn-outline-secondary" (click)="closeForm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="customerForm">
+
+        <div class="form-group">
+          <label class="form-label" for="">First Name <span class="red-asterisk">*</span></label>
+          <input type="text" name="" id="" placeholder="First Name" class="form-control"
+          formControlName="firstName"
+          [class.is-invalid]="firstName.touched && firstName.invalid">
+          <small class="invalid-feedback">Please enter first name</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="">Last Name <span class="red-asterisk">*</span></label>
+          <input type="text" name="" id="" placeholder="Last Name" class="form-control"
+          formControlName="lastName"
+          [class.is-invalid]="lastName.touched && lastName.invalid">
+          <small class="invalid-feedback">Please enter last name</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="">Email <span class="red-asterisk">*</span></label>
+          <input type="text" name="" id="" placeholder="eg: abc@gmail.com" class="form-control"
+          formControlName="email"
+          [class.is-invalid]="email.touched && email.invalid">
+          <small class="invalid-feedback">Please enter email</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="">Phone Number <span class="red-asterisk">*</span></label>
+          <input type="text" name="" id="" placeholder="Phone Number" class="form-control"
+          formControlName="phoneNumber"
+          [class.is-invalid]="phoneNumber.touched && phoneNumber.invalid">
+          <small class="invalid-feedback">Please enter phone number</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

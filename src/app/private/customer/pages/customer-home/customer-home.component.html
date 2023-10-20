@@ -1,0 +1,50 @@
+<div class="main-content-wrapper">
+  
+  <!-- customer list view section start here -->
+  <div class="customer-details" *ngIf="isCustomerDashboard">
+    <h4>Customer Details</h4>
+
+    <div class="toolbar-pagination-wrapper">
+      <div class="toolbar">
+        <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+      </div>
+      <div class="pagination">
+        <app-pagination [pageData]="pageDate$|async" (pageChangedEmitter)="pageChangeEvent($event)"></app-pagination>
+      </div>
+    </div>
+
+    <div class="list-view-wrapper">
+      <div class="list-header">
+        <ng-container *ngFor="let column of columns">
+          <div class="header-item">{{column?.name}}</div>
+        </ng-container>
+      </div>
+
+      <div class="list-row-wrapper">
+        <ng-container *ngIf="(rowData$ |async).length; else emptyTemplate">
+          <div class="list-row" *ngFor="let row of rowData$ |async">
+            <div class="row-item">{{row?.firstName}} {{row?.lastName}}</div>
+            <div class="row-item">{{row?.email}}</div>
+            <div class="row-item">{{row?.phoneNumber}}</div>
+            <div class="row-item">
+              <div><button class="btn btn-light" (click)="editCustomer(row)"><i-feather name="edit"></i-feather></button></div>
+              <div><button class="btn btn-light" (click)="deleteCustomer(row)"><i-feather name="trash"></i-feather></button></div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #emptyTemplate>
+          No Data Present
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <!-- customer list view section end here -->
+
+
+  <!-- customer-form section start here -->
+  <div class="customer-form-wrapper" *ngIf="!isCustomerDashboard">
+    <app-customer-form (formCloseEvent)="formCloseEvent()"></app-customer-form>
+  </div>
+  <!-- customer-form section end here -->
+</div>

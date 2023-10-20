@@ -1,0 +1,11 @@
+<div class="private-layout">
+  <div class="header">
+    <app-header (logOutUserEvent)="logOutUser()"></app-header>
+  </div>
+  <div class="sidenav">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="main_content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="pagination-wrapper">
+
+  <div class="page-size">
+    {{pageSizeLabel}}
+  </div>
+
+  <ul class="pagination mb-0">
+    <li>
+      <button class="btn btn-sm" [ngbTooltip]="'Previous Page'" (click)="previousPage()"
+        [disabled]="isDisablePrevious"
+      >
+        <i-feather name="chevron-left"></i-feather>
+      </button>
+    </li>
+    <li>
+      <button class="btn btn-sm" (click)="nextPage()" [ngbTooltip]="'Next Page'"
+        [disabled]="isDisableNext"
+        >
+        <i-feather name="chevron-right"></i-feather>
+      </button>
+    </li>
+  </ul>
+</div>

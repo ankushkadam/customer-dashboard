@@ -1,0 +1,22 @@
+.login-page-wrapper{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+
+  .login-page-image{
+    flex-basis: 60%;
+    background-color: cyan;
+  }
+
+  .login-page-form{
+    flex-basis: 40%;
+    display: grid;
+    place-content: center;
+
+    .login-form{
+      h5{
+        text-transform: uppercase;
+      }
+    }
+  }
+}

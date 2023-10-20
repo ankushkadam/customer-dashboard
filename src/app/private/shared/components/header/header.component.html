@@ -1,0 +1,15 @@
+<div class="header-wrapper">
+  <div class="logo">
+    <h5>Logo Here</h5>
+  </div>
+  <div class="user-logout">
+    <div ngbDropdown class="d-inline-block">
+			<button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+				<i-feather name="user"></i-feather>
+			</button>
+			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+				<button ngbDropdownItem (click)="logoutUser()">Log Out</button>
+			</div>
+		</div>
+  </div>
+</div>

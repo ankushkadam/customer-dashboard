@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <nav class="primary-menu">
+    <ul class="list-unstyled">
+      <li class="menu-item" *ngFor="let menu of menuList" [class.active]="menu.selected">
+        <a [routerLink]="menu.url" 
+          ngbTooltip="{{menu.displayName}}"
+          container="body" placement="right"
+            [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" (click)="showMenu(menu)">
+            <div class="icon-name-wrapper">
+              <div class="menu-name">{{menu.displayName}}</div>
+            </div>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

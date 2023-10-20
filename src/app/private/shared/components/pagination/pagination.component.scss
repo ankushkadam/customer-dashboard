@@ -1,0 +1,32 @@
+@mixin button_style {
+  border: 1px solid #ddd;
+  color: #ddd;
+}
+
+.pagination-wrapper{
+
+  display: flex;
+  align-items: center;
+
+  .page-size{
+    margin-right: 1rem;
+  }
+
+  .pagination {
+    margin-bottom: -1px;
+    li{
+      button{
+        @include button_style;
+        border-radius: 5px 0px 0px 0px;
+  
+      }
+      &:last-child{
+        button{
+          @include button_style;
+          border-radius: 0px 5px 0px 0px;
+      }
+    }
+    }
+  
+  }
+}

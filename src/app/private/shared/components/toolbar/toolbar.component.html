@@ -1,0 +1,14 @@
+<div class="toolbar-wrapper">
+  <ul class="pagination mb-0">
+    <li *ngFor="let item of toolbarList" >
+      <div [ngbTooltip]="item.value" container="body">
+        <button class="btn"
+          (click)="toolbarItemClicked($event, item)">
+          <i-feather [name]="item.icon"></i-feather>
+          <!-- add badge on filter icon (if filterCount is greter than 0) -->
+          <!-- <span class="badge badge-secondary">{{filterCount}}</span> -->
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
