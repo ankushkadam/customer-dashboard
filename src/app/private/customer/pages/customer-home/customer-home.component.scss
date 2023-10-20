@@ -27,10 +27,12 @@
       font-size: 1.2rem;
       height: 4rem;
       align-items: center;
+      overflow: hidden;
 
       .header-item{
         padding: 1rem;
         border: 0.5px solid #ddd;
+        overflow: hidden;
 
         &+ .header-item{
           border-left-color: transparent;
@@ -44,6 +46,7 @@
       grid-template-columns: 1.5fr repeat(2, 1fr) 10rem;
       height: 4rem;
       align-items: center;
+      overflow: hidden;
 
       .row-item{
         border: 0.5px solid #ddd;
@@ -52,6 +55,9 @@
         align-items: center;
         height: inherit;
         border-top: transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:last-child {
           display: grid;
@@ -80,6 +86,39 @@
   // customer-form
   .customer-form-wrapper{
     width: 50%;
+    height: 100%;
+    overflow: auto;
+    padding-right: 1rem;
   }
 
+  .customer-details-mobile{
+    display: none;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .customer-form-wrapper{
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .customer-details{
+      display: none;
+    }
+    .customer-details-mobile{
+      height: 100%;
+      overflow: auto;
+      display: block;
+
+      .toolbar{
+        
+      }
+
+      .card{
+        margin-top: 0.5rem;
+      }
+    }
+    
+  }
 }

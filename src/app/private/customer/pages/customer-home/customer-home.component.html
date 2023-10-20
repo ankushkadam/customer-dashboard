@@ -39,6 +39,44 @@
       </div>
     </div>
   </div>
+
+  <!-- mobile view  section -->
+  <div class="customer-details-mobile" *ngIf="isCustomerDashboard">
+    <h4>Customer Details</h4>
+
+    <div class="toolbar">
+      <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+    </div>
+    <ng-container *ngIf="(rowData$ |async).length; else emptyTemplate">
+      <div class="card" *ngFor="let cardItem of rowData$ |async">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Name</label>
+              <p>{{cardItem?.firstName}} {{cardItem?.lastName}}</p>
+            </div>
+            <div class="col-md-4">
+              <label for="">Email</label>
+              <p>{{cardItem?.email}}</p>
+            </div>
+            <div class="col-md-4">
+              <label for="">Phone Number</label>
+              <p>{{cardItem?.phoneNumber}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #emptyTemplate> 
+      No Data Present
+    </ng-template>  
+
+    <div class="pagination">
+      <app-pagination [pageData]="pageDate$|async" (pageChangedEmitter)="pageChangeEvent($event)"></app-pagination>
+    </div>
+
+  </div>
+
   <!-- customer list view section end here -->
 
 

@@ -29,4 +29,28 @@
     }
   
   }
+
+
+  @media only screen and (max-width: 600px){
+    .page-size{
+      display: none;
+    }
+
+    .pagination{
+      margin-top: 0.5rem;
+      li{
+        .btn{
+          margin-right: 0.5rem;
+          border-radius: 25%;
+        }
+
+        &:last-child{
+          .btn{
+            margin-right: 0.5rem;
+            border-radius: 25%;
+          }
+        }
+      }
+    }
+  }
 }
