@@ -22,8 +22,10 @@ export class CustomerService {
       // sorting list
       this.sortingCustomerList(cloneExistingAndUpdatedCustomerList);
 
+      const searchCustomerResult = this.filterCustomerAsPerSearchTerm(cloneExistingAndUpdatedCustomerList);
+
       // showing record to UI as per pagination config
-      const filterList = this.filterCustomerAsPerPagination(cloneExistingAndUpdatedCustomerList);
+      const filterList = this.filterCustomerAsPerPagination(searchCustomerResult);
       this.store.setState({rowData: filterList});
     } else{
       this.store.setState({rowData: []});
@@ -98,5 +100,22 @@ export class CustomerService {
       customerList[existingIndex].active = false;
     }
     this.getAllCustomerList();
+  }
+
+  searhCustomer(searchTerm: string|number){
+    this.store.setState({searchTerm});
+    this.getAllCustomerList();
+  }
+
+  filterCustomerAsPerSearchTerm(customerList: CustomerListModel[]): CustomerListModel[]{
+    let searchResultList: CustomerListModel[] = [];
+    const {searchTerm} = this.store.getStateSnapshot();
+    if(searchTerm){
+      searchResultList = customerList.filter(c => c.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) ||  c.lastName?.toLowerCase().includes(searchTerm.toLowerCase()) || c.email?.toLowerCase().includes(searchTerm.toLowerCase()) || c.phoneNumber?.toLowerCase().includes(searchTerm.toLowerCase()));
+    } else {
+      searchResultList = customerList;
+    }
+
+    return searchResultList;
   }
 }

@@ -4,12 +4,18 @@
   <div class="customer-details" *ngIf="isCustomerDashboard">
     <h4>Customer Details</h4>
 
-    <div class="toolbar-pagination-wrapper">
-      <div class="toolbar">
-        <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+    <div class="search-toolbar-pagination-wrapper">
+      <div class="search-wrapper">
+        <input type="search" class="form-control" (change)="searchCustomer(searchTerm.value)" #searchTerm>
       </div>
-      <div class="pagination">
-        <app-pagination [pageData]="pageDate$|async" (pageChangedEmitter)="pageChangeEvent($event)"></app-pagination>
+
+      <div class="toolbar-pagination-wrapper">
+        <div class="toolbar">
+          <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+        </div>
+        <div class="pagination">
+          <app-pagination [pageData]="pageDate$|async" (pageChangedEmitter)="pageChangeEvent($event)"></app-pagination>
+        </div>
       </div>
     </div>
 
@@ -44,24 +50,37 @@
   <div class="customer-details-mobile" *ngIf="isCustomerDashboard">
     <h4>Customer Details</h4>
 
-    <div class="toolbar">
-      <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+    <div class="search-toolbar-wrapper">
+      <div class="search-wrapper">
+        <input type="search" class="form-control" (change)="searchCustomer(searchTerm.value)" #searchTerm>
+      </div>
+      <div class="toolbar">
+        <app-toolbar (toolbarItemClickedEmitter)="toolbarClickEvent($event)"></app-toolbar>
+      </div>
     </div>
     <ng-container *ngIf="(rowData$ |async).length; else emptyTemplate">
       <div class="card" *ngFor="let cardItem of rowData$ |async">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-xs-6 col-sm-6">
               <label for="">Name</label>
               <p>{{cardItem?.firstName}} {{cardItem?.lastName}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-6 col-sm-6">
               <label for="">Email</label>
               <p>{{cardItem?.email}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-6 col-sm-6">
               <label for="">Phone Number</label>
               <p>{{cardItem?.phoneNumber}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="buttons-wrapper">
+                <div><button class="btn btn-light btn-sm" (click)="editCustomer(cardItem)"><i-feather name="edit"></i-feather></button></div>
+                <div><button class="btn btn-light btn-sm" (click)="deleteCustomer(cardItem)"><i-feather name="trash"></i-feather></button></div>
+              </div>
             </div>
           </div>
         </div>

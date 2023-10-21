@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login-service/login.service';
+import { EMAIL_ID, PASSWORD } from 'src/app/private/shared/constant/regex.constant';
 
 @Component({
   selector: 'app-login',
@@ -20,16 +21,20 @@ export class LoginComponent implements OnInit {
     this.createLoginForm()
   }
 
+  get email(): AbstractControl { return this.loginForm.get('email') as AbstractControl } 
+  get password(): AbstractControl { return this.loginForm.get('password') as AbstractControl } 
+
   // create login page reactive form
   createLoginForm(): void{
     this.loginForm = this.fb.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required]
+      email: [null, [Validators.required, Validators.pattern(EMAIL_ID)]],
+      password: [null, [Validators.required, Validators.pattern(PASSWORD)]]
     })
   }
 
 
   async loginUser(): Promise<void> {
+    this.loginForm.markAllAsTouched();
     if(this.loginForm.invalid){
       alert('Invalid Form, Please fill all the details and try again.');
       return;

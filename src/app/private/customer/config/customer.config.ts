@@ -8,4 +8,6 @@ export class CustomerConfig {
   };
 
   sortData = [{ key: 'id', value: 'desc' }];
+
+  searchTerm = ''
 }

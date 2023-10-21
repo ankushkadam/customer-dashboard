@@ -13,11 +13,6 @@ export class ToolbarComponent {
 
   toolbarList = [
     {
-      icon: 'filter',
-      key: ApplicationContants.FILTER,
-      value: 'Filter',
-    },
-    {
       icon: 'refresh-cw',
       key: ApplicationContants.REFRESH,
       value: 'Refresh',

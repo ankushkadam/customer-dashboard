@@ -2,14 +2,38 @@
   <div class="logo">
     <h5>Logo Here</h5>
   </div>
-  <div class="user-logout">
-    <div ngbDropdown class="d-inline-block">
-			<button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
-				<i-feather name="user"></i-feather>
-			</button>
-			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-				<button ngbDropdownItem (click)="logoutUser()">Log Out</button>
+
+	<div class="hamburger-user-wrapper">
+		<div class="hamburger" (click)="isHambergerClick=!isHambergerClick">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	
+		<div class="user-logout">
+			<div ngbDropdown class="d-inline-block">
+				<button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+					<i-feather name="user"></i-feather>
+				</button>
+				<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+					<button ngbDropdownItem (click)="logoutUser()">Log Out</button>
+				</div>
 			</div>
 		</div>
-  </div>
+	</div>
+</div>
+
+<div [class.mobile-menu]="isHambergerClick" *ngIf="isHambergerClick">
+	<ul class="list-unstyled">
+		<li class="menu-item" *ngFor="let menu of menuList" [class.active]="menu.selected">
+			<a [routerLink]="menu.url" 
+				ngbTooltip="{{menu.displayName}}"
+				container="body" placement="right"
+					[routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" (click)="showMenu(menu)">
+					<div class="icon-name-wrapper">
+						<div class="menu-name">{{menu.displayName}}</div>
+					</div>
+			</a>
+		</li>
+	</ul>
 </div>

@@ -7,6 +7,7 @@ export interface CustomerModel {
   rowData?: CustomerListModel[];
   selectedCustomer?: CustomerListModel;
   sortData?: any;
+  searchTerm?: string;
 }
 
 export interface CustomerListModel {

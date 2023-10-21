@@ -6,17 +6,23 @@
   <!-- form section -->
   <div class="login-page-form">
     <div class="login-form">
-      <h5>User Login</h5>
+      <h4>User Login</h4>
 
       <!-- Actual form start here -->
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-        <div class="mb-3">
+        <div class="mb-3 form-group">
           <label for="username" class="form-label">Email</label>
-          <input formControlName="email" type="email" class="form-control" id="username">
+          <input formControlName="email" autocomplete="off" type="email" class="form-control" id="username"
+           [class.is-invalid]="email.touched && email.invalid">
+
+           <small class="invalid-feedback">Please enter valid email address</small>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form-group">
           <label for="password" class="form-label">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="password">
+          <input formControlName="password" type="password" autocomplete="off" class="form-control" id="password"
+          [class.is-invalid]="password.touched && password.invalid"
+          >
+          <small class="invalid-feedback">Password must contain at least 6 character</small>
         </div>
         
         <button type="submit" class="btn btn-primary btn-submit">Submit</button>

@@ -1,11 +1,11 @@
 <div class="customer-form">
   <div class="card">
     <div class="card-header">
-      <h5>Add Customer</h5>
+      <h5>{{(customerId ? 'Add' : 'Edit')}} Customer</h5>
 
       <div class="action-wrapper">
-        <button class="btn btn-outline-primary" (click)="submit()">Save</button>
-        <button class="btn btn-outline-secondary" (click)="closeForm()">Cancel</button>
+        <button class="btn btn-outline-primary btn-xs-sm" (click)="submit()">Save</button>
+        <button class="btn btn-outline-secondary btn-xs-sm" (click)="closeForm()">Cancel</button>
       </div>
     </div>
   </div>

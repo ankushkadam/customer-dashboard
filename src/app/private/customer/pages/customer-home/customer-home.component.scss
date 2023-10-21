@@ -7,16 +7,23 @@
   padding: 1rem;
   border-radius: 0.25rem;
 
-  .toolbar-pagination-wrapper{
+  .search-toolbar-pagination-wrapper{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: end;
-    margin-top: 1rem;
 
-    .pagination{
-      margin-left: 1rem;
+    .toolbar-pagination-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      margin-top: 1rem;
+  
+      .pagination{
+        margin-left: 1rem;
+      }
     }
   }
+
 
   //list view scss
   .list-view-wrapper{
@@ -111,12 +118,32 @@
       overflow: auto;
       display: block;
 
-      .toolbar{
-        
+      .search-toolbar-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
       .card{
         margin-top: 0.5rem;
+
+        .card-body{
+          label{
+            font-weight: 500;
+          }
+          .buttons-wrapper{
+            display: flex;
+            .btn{
+              i-feather{
+                color: blue;
+                width: 1.1rem;
+              }
+              &+ .btn{
+                margin-left: 1rem;
+              }
+            }
+          }
+        }
       }
     }
     

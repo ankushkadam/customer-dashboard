@@ -13,10 +13,34 @@
     display: grid;
     place-content: center;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .login-form{
-      h5{
+      width: 50%;
+      h4{
         text-transform: uppercase;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #a5a2a2;
+        padding-bottom: 1rem;
+        display: inline-block;
+      }
+
+      label{
+        font-weight: 500;
       }
     }
   }
+
+  @media only screen and (max-width: 768px){
+    .login-page-image{
+      display: none;
+    }
+
+    .login-page-form{
+      flex-basis: 100%;
+    }
+  }
+
 }

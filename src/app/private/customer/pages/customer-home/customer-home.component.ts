@@ -19,7 +19,6 @@ export class CustomerHomeComponent implements OnInit{
   ];
 
   rowData$: Observable<any> = this.store.select('rowData');
-  toolbar$: Observable<any> = this.store.select('toolbarData');
   pageDate$: Observable<any> = this.store.select('pageData');
 
   isCustomerDashboard = true;
@@ -62,4 +61,9 @@ export class CustomerHomeComponent implements OnInit{
   deleteCustomer(selectedCustomer: CustomerListModel): void {
     this.service.deleteCustomer(selectedCustomer);
   }
+
+  searchCustomer(searchTerm: string | number): void {
+    console.log('searchTerm', searchTerm);
+    this.service.searhCustomer(searchTerm);
+  } 
 }
